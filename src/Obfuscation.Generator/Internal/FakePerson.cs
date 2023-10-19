@@ -6,13 +6,13 @@ using Bogus.DataSets;
 internal sealed class FakePerson
 {
     public int FakeId { get; set; }
-    public string FirstName { get; set; }
-    public string MiddleName { get; set; }
-    public string LastName { get; set; }
+    public string FirstName { get; set; } = "";
+    public string MiddleName { get; set; } = "";
+    public string LastName { get; set; } = "";
     public Name.Gender Gender { get; set; }
-    public string EmailAddress { get; set; }
-    
-    public string DisplayName => $"{FirstName} {LastName}";
+    public string EmailAddress { get; set; } = "";
+
+    private string DisplayName => $"{FirstName} {LastName}";
 
     public override string ToString()
     {

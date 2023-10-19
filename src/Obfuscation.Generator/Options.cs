@@ -9,8 +9,7 @@ public class Options
         HelpText =
             "Number of objects to generate. For ID Number generator the max will be capped to 10"),]
     public int Count { get; set; }
-
-    // Omitting long name, defaults to name of property, ie "--verbose"
+    
     [Option('o', "operation",
         Required = true,
         HelpText = "Operation to perform. choices: Id, Person ")]

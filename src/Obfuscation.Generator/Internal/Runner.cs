@@ -2,7 +2,7 @@ using CommandLine;
 
 namespace Obfuscation.Generator.Internal;
 
-public static class Runner
+internal static class Runner
 {
     public static void OptionsRunner(Options options)
     {

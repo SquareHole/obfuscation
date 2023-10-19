@@ -2,7 +2,7 @@
 
 using Bogus.DataSets;
 
-public class SouthAfricanIdGenerator
+internal sealed class SouthAfricanIdGenerator
 {
     
     public string GenerateId(DateTime dateOfBirth, Name.Gender gender)
