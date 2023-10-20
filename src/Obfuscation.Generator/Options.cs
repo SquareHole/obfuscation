@@ -14,9 +14,9 @@ public class Options
         Required = true,
         HelpText = "Operation to perform. choices: Id, Person ")]
     public Operation Operation { get; set; }
-    
+
     [Option('f', "file",
         Required = false,
         HelpText = "File name to write to. If not specified, will write to console.")]
-    public string FileName { get; set; }
+    public string FileName { get; set; } = "";
 }

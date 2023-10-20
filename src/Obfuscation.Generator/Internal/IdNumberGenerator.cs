@@ -15,7 +15,7 @@ internal sealed class IdNumberGenerator : IGenerator<IdNumber>
         {
             for (int i = 0; i < Math.Min(count, 100); i++)
             {
-                yield return new IdNumber
+                yield return new()
                 {
                     DateOfBirth = currentDate,
                     MaleIdNumber = southAfricanIdGenerator.GenerateId(currentDate, Name.Gender.Male),

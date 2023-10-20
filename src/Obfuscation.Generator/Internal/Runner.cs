@@ -16,7 +16,7 @@ internal static class Runner
                 FakeNameRunner(options);
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(Options.Operation));
+                return Task.FromException(new ArgumentNullException(nameof(Options)));
         }
 
         return Task.CompletedTask;
