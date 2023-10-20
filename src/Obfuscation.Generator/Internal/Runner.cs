@@ -1,10 +1,8 @@
-using CommandLine;
-
 namespace Obfuscation.Generator.Internal;
 
 internal static class Runner
 {
-    public static void OptionsRunner(Options options)
+    public static Task OptionsRunner(Options options)
     {
         Console.WriteLine($"Count: {options.Count}");
         Console.WriteLine($"Operation: {options.Operation}");
@@ -18,8 +16,10 @@ internal static class Runner
                 FakeNameRunner(options);
                 break;
             default:
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(Options.Operation));
         }
+
+        return Task.CompletedTask;
     }
 
     private static void FakeNameRunner(Options options)

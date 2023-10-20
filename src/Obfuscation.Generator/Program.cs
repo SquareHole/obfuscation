@@ -2,9 +2,7 @@
 using Obfuscation.Generator;
 using Obfuscation.Generator.Internal;
 
-
-
-Parser.Default
+await Parser.Default
     .ParseArguments<Options>(args)
-    .WithParsed(Runner.OptionsRunner)
-    .WithNotParsed(Handler.HandleParseError);
+    .WithParsedAsync(Runner.OptionsRunner);
+    

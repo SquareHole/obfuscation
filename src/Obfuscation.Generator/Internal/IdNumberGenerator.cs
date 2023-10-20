@@ -13,7 +13,7 @@ internal sealed class IdNumberGenerator : IGenerator<IdNumber>
 
         while (currentDate < endDate)
         {
-            for (int i = 0; i < Math.Min(count, 10); i++)
+            for (int i = 0; i < Math.Min(count, 100); i++)
             {
                 yield return new IdNumber
                 {
