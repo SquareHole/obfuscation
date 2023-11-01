@@ -8,7 +8,7 @@ public class FakePhone
 
     public override string ToString()
     {
-        return $"{AreaCode}-{Number}";
+        return $"{PhoneKind.ToString()}|{AreaCode}-{Number}";
     }
 }
 

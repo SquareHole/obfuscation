@@ -20,17 +20,3 @@ internal sealed class FakeNameGenerator : IGenerator<FakePerson>
             yield return faker.Generate();
     }
 }
-
-internal sealed class FakePhoneGenerator : IGenerator<FakePhone>
-{
-    public IEnumerable<FakePhone> Run(int count = 1)
-    {
-        Faker<FakePhone>? faker = new Faker<FakePhone>()
-            .RuleFor(u => u.PhoneKind, f => f.PickRandom<PhoneKind>())
-            .RuleFor(u => u.AreaCode, f => f.Phone.PhoneNumber("0##"))
-            .RuleFor(u => u.Number, f => f.Phone.PhoneNumber("###-####"));
-
-        for (int i = 0; i < count; i++)
-            yield return faker.Generate();
-    }
-}
