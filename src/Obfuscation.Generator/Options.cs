@@ -12,7 +12,7 @@ public class Options
     
     [Option('o', "operation",
         Required = true,
-        HelpText = "Operation to perform. choices: Id, Person ")]
+        HelpText = "Operation to perform. choices: Id, Person, Phone ")]
     public Operation Operation { get; set; }
 
     [Option('f', "file",

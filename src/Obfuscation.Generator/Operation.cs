@@ -3,5 +3,6 @@ namespace Obfuscation.Generator;
 public enum Operation
 {
     Id,
-    Person
+    Person,
+    Phone
 }

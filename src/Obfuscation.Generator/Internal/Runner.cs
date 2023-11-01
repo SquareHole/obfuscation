@@ -15,6 +15,9 @@ internal static class Runner
             case Operation.Person:
                 FakeNameRunner(options);
                 break;
+            case Operation.Phone:
+                FakePhoneRunner(options);
+                break;
             default:
                 return Task.FromException(new ArgumentNullException(nameof(Options)));
         }
@@ -34,6 +37,21 @@ internal static class Runner
             foreach (FakePerson fakePerson in fakeNameGenerator.Run(options.Count))
             {
                 Console.WriteLine(fakePerson);
+            }
+        }
+    }
+    private static void FakePhoneRunner(Options options)
+    {
+        FakePhoneGenerator fakePhoneGenerator = new();
+        if (!string.IsNullOrEmpty(options.FileName))
+        {
+            File.WriteAllLines(options.FileName, fakePhoneGenerator.Run(options.Count).Select(x => x.ToString()));
+        }
+        else
+        {
+            foreach (FakePhone fakePhone in fakePhoneGenerator.Run(options.Count))
+            {
+                Console.WriteLine(fakePhone);
             }
         }
     }

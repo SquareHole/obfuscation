@@ -9,7 +9,7 @@ internal sealed class SouthAfricanIdGenerator
     {
 
         // Parse date of birth
-        string? yymmdd = dateOfBirth.ToString("yyMMdd");
+        string yymmdd = dateOfBirth.ToString("yyMMdd");
 
         // Determine gender SSSS
         int ssss = gender switch
@@ -30,7 +30,7 @@ internal sealed class SouthAfricanIdGenerator
 
     int CalculateChecksum(string yymmdd, int ssss,int c, int a)
     {
-        string? idWithoutChecksum = $"{yymmdd}{ssss:D4}{c}{a}";
+        string idWithoutChecksum = $"{yymmdd}{ssss:D4}{c}{a}";
 
 
         int sum = 0;
