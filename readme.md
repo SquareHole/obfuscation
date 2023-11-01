@@ -29,6 +29,18 @@ Generate a fake person with the following properties:
     public string DisplayName => $"{FirstName} {LastName}";
 ```
 
+### Phone Number
+
+Generate a list of fake phone numbers for the provided area code and phone number type.
+
+```cs
+
+```csharp
+    public PhoneKind PhoneKind { get; set; }
+    public string AreaCode { get; set; } = "";
+    public string Number { get; set; } = "";
+```
+
 ## Usage
 
 Below is the output from the --help flag for the command line tool.
@@ -40,7 +52,7 @@ Copyright (C) 2023 Obfuscation.Generator
 
   -c, --count        Required. Number of objects to generate. For ID Number generator the max will be capped to 10
 
-  -o, --operation    Required. Operation to perform. choices: Id, Person
+  -o, --operation    Required. Operation to perform. choices: Id, Person, Phone
 
   -f, --file         File name to write to. If not specified, will write to console.
 
