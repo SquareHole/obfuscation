@@ -3,6 +3,9 @@
 using System.Text.Json.Serialization;
 using Bogus.DataSets;
 
+/// <summary>
+/// Fake person
+/// </summary>
 internal sealed class FakePerson
 {
     public int FakeId { get; set; }

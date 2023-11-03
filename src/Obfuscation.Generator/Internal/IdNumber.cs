@@ -1,6 +1,6 @@
 ﻿namespace Obfuscation.Generator.Internal;
 
-internal class IdNumber
+internal sealed class IdNumber
 {
     public DateTime DateOfBirth { get; set; }
     public string MaleIdNumber { get; set; } = "";

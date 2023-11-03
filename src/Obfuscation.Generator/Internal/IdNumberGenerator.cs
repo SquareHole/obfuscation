@@ -18,8 +18,8 @@ internal sealed class IdNumberGenerator : IGenerator<IdNumber>
                 yield return new()
                 {
                     DateOfBirth = currentDate,
-                    MaleIdNumber = southAfricanIdGenerator.GenerateId(currentDate, Name.Gender.Male),
-                    FemaleIdNumber = southAfricanIdGenerator.GenerateId(currentDate, Name.Gender.Female),
+                    MaleIdNumber = SouthAfricanIdGenerator.GenerateId(currentDate, Name.Gender.Male),
+                    FemaleIdNumber = SouthAfricanIdGenerator.GenerateId(currentDate, Name.Gender.Female),
                 };
             }
 

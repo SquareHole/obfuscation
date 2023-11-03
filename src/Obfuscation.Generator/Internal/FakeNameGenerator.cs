@@ -3,6 +3,9 @@
 using Bogus;
 using Bogus.DataSets;
 
+/// <summary>
+/// Fake name generator
+/// </summary>
 internal sealed class FakeNameGenerator : IGenerator<FakePerson>
 {
     public IEnumerable<FakePerson> Run(int count = 1)

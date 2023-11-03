@@ -2,6 +2,9 @@ using Bogus;
 
 namespace Obfuscation.Generator.Internal;
 
+/// <summary>
+/// Fake phone generator
+/// </summary>
 internal sealed class FakePhoneGenerator : IGenerator<FakePhone>
 {
     public IEnumerable<FakePhone> Run(int count = 1)

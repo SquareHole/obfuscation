@@ -19,7 +19,7 @@ internal static class Runner
                 FakePhoneRunner(options);
                 break;
             default:
-                return Task.FromException(new ArgumentNullException(nameof(Options)));
+                return Task.FromException(new ArgumentNullException(nameof(options)));
         }
 
         return Task.CompletedTask;

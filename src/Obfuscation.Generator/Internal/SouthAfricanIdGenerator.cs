@@ -1,15 +1,17 @@
-﻿namespace Obfuscation.Generator.Internal;
+﻿using System.Globalization;
+
+namespace Obfuscation.Generator.Internal;
 
 using Bogus.DataSets;
 
 internal sealed class SouthAfricanIdGenerator
 {
     
-    public string GenerateId(DateTime dateOfBirth, Name.Gender gender)
+    public static string GenerateId(DateTime dateOfBirth, Name.Gender gender)
     {
 
         // Parse date of birth
-        string yymmdd = dateOfBirth.ToString("yyMMdd");
+        string yymmdd = dateOfBirth.ToString("yyMMdd", CultureInfo.InvariantCulture);
 
         // Determine gender SSSS
         int ssss = gender switch
@@ -28,7 +30,7 @@ internal sealed class SouthAfricanIdGenerator
         return $"{yymmdd}{ssss:D4}{c}{a}{z}";
     }
 
-    int CalculateChecksum(string yymmdd, int ssss,int c, int a)
+    static int CalculateChecksum(string yymmdd, int ssss,int c, int a)
     {
         string idWithoutChecksum = $"{yymmdd}{ssss:D4}{c}{a}";
 
