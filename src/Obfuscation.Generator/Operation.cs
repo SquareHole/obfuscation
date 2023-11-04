@@ -6,17 +6,17 @@ namespace Obfuscation.Generator;
 public enum Operation
 {
     /// <summary>
-    /// Identity number
+    /// Identity number operation flags the application to generate South-African identity numbers.
     /// </summary>
     Id,
     
     /// <summary>
-    /// Person information
+    /// Person information flags the application to generate name, middle name and surname combinations.
     /// </summary>
     Person,
     
     /// <summary>
-    /// Phone number
+    /// Phone number flags the application to generate South-African phone numbers.
     /// </summary>
     Phone
 }
