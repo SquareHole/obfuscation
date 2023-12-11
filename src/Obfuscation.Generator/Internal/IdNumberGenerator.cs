@@ -6,8 +6,8 @@ internal sealed class IdNumberGenerator : IGenerator<IdNumber>
 {
     public IEnumerable<IdNumber> Run( int count = 1)
     {
-        DateTime startDate = new(1937, 1, 1);
-        DateTime endDate = DateTime.Today.AddYears(-2);
+        DateTime startDate = new(1901, 1, 1);
+        DateTime endDate = DateTime.Today.AddMonths(-1);
         SouthAfricanIdGenerator southAfricanIdGenerator = new();
         DateTime currentDate = startDate;
 
