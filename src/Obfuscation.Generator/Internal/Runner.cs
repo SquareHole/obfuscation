@@ -61,6 +61,7 @@ internal static class Runner
         IdNumberGenerator idNumberGenerator = new();
         if (!string.IsNullOrEmpty(options.FileName))
         {
+            
             File.WriteAllLines(options.FileName, idNumberGenerator.Run(options.Count).Select(x => x.ToString()));
         }
         else

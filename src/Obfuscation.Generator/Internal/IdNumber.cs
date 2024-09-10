@@ -8,6 +8,9 @@ internal sealed class IdNumber
 
     public override string ToString()
     {
-        return $"{DateOfBirth:yyyy-MM-dd}|{MaleIdNumber}|{FemaleIdNumber}";
+        return
+            $"INSERT INTO [FakeLegalReferencenumber] ([DateOfBirth],[Gender],[LegalReferenceNumber],[Used]) VALUES ('{DateOfBirth:yyyy-MM-dd}','Male','{MaleIdNumber}',0); " +
+            $"INSERT INTO [FakeLegalReferencenumber] ([DateOfBirth],[Gender],[LegalReferenceNumber],[Used]) VALUES ('{DateOfBirth:yyyy-MM-dd}','Female','{FemaleIdNumber}',0);";
+        //return $"{DateOfBirth:yyyy-MM-dd}|{MaleIdNumber}|{FemaleIdNumber}";
     }
 }
