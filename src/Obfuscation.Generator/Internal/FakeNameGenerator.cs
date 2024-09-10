@@ -17,7 +17,7 @@ internal sealed class FakeNameGenerator : IGenerator<FakePerson>
             .RuleFor(u => u.MiddleName, (f, u) => f.Name.FirstName(u.Gender))
             .RuleFor(u => u.EmailAddress,
                 (f, u) => f.Internet.Email(u.FirstName, u.LastName, provider: "brightrockdev.co.za"))
-            .RuleFor(u => u.FakeId, (f, u) => f.IndexFaker);
+            .RuleFor(u => u.FakeId, (f, _) => f.IndexFaker);
 
         for (int i = 0; i < count; i++)
             yield return faker.Generate();

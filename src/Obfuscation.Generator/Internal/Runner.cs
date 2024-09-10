@@ -1,73 +1,87 @@
 namespace Obfuscation.Generator.Internal;
 
-internal static class Runner
+internal sealed class Runner
 {
-    public static Task OptionsRunner(Options options)
+    private readonly CancellationToken _cancellationToken;
+
+    public Runner(CancellationToken cancellationToken)
     {
+        _cancellationToken = cancellationToken;
+    }
+    public  async Task OptionsRunner(Options options)
+    {
+        
         Console.WriteLine($"Count: {options.Count}");
         Console.WriteLine($"Operation: {options.Operation}");
 
-        switch (options.Operation)
+        try
         {
-            case Operation.Id:
-                IdNumberRunner(options);
-                break;
-            case Operation.Person:
-                FakeNameRunner(options);
-                break;
-            case Operation.Phone:
-                FakePhoneRunner(options);
-                break;
-            default:
-                return Task.FromException(new ArgumentNullException(nameof(options)));
+            switch (options.Operation)
+            {
+                case Operation.Id:
+                    await IdNumberRunner(options, _cancellationToken);
+                    break;
+                case Operation.Person:
+                    await FakeNameRunner(options, _cancellationToken);
+                    break;
+                case Operation.Phone:
+                    await FakePhoneRunner(options, _cancellationToken);
+                    break;
+                default:
+                    throw new ArgumentNullException(nameof(options));
+            }
         }
-
-        return Task.CompletedTask;
+        catch (OperationCanceledException e)
+        {
+            Console.Write("*** Operation cancelled ****");
+        }
     }
 
-    private static void FakeNameRunner(Options options)
+    private static async Task FakeNameRunner(Options options, CancellationToken cancellationToken)
     {
         FakeNameGenerator fakeNameGenerator = new();
         if (!string.IsNullOrEmpty(options.FileName))
         {
-            File.WriteAllLines(options.FileName, fakeNameGenerator.Run(options.Count).Select(x => x.ToString()));
+            await File.WriteAllLinesAsync(options.FileName, fakeNameGenerator.Run(options.Count).Select(x => x.ToString()), cancellationToken);
         }
         else
         {
             foreach (FakePerson fakePerson in fakeNameGenerator.Run(options.Count))
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 Console.WriteLine(fakePerson);
             }
         }
     }
-    private static void FakePhoneRunner(Options options)
+    private static async Task FakePhoneRunner(Options options, CancellationToken cancellationToken)
     {
         FakePhoneGenerator fakePhoneGenerator = new();
         if (!string.IsNullOrEmpty(options.FileName))
         {
-            File.WriteAllLines(options.FileName, fakePhoneGenerator.Run(options.Count).Select(x => x.ToString()));
+            await File.WriteAllLinesAsync(options.FileName, fakePhoneGenerator.Run(options.Count).Select(x => x.ToString()), cancellationToken);
         }
         else
         {
             foreach (FakePhone fakePhone in fakePhoneGenerator.Run(options.Count))
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 Console.WriteLine(fakePhone);
             }
         }
     }
 
-    private static void IdNumberRunner(Options options)
+    private static async Task IdNumberRunner(Options options, CancellationToken cancellationToken)
     {
         IdNumberGenerator idNumberGenerator = new();
         if (!string.IsNullOrEmpty(options.FileName))
         {
-            
-            File.WriteAllLines(options.FileName, idNumberGenerator.Run(options.Count).Select(x => x.ToString()));
+            await File.WriteAllLinesAsync(options.FileName, idNumberGenerator.Run(options.Count).Select(x => x.ToString()), cancellationToken);
         }
         else
         {
             foreach (IdNumber idNumber in idNumberGenerator.Run(options.Count))
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 Console.WriteLine(idNumber);
             }
         }

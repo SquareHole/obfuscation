@@ -27,3 +27,5 @@ internal sealed class IdNumberGenerator : IGenerator<IdNumber>
         }
     }
 }
+
+
